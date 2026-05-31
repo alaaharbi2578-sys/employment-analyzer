@@ -407,14 +407,15 @@ async function callClaude(system, userMsg, maxTokens) {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: maxTokens,
-      system: system,
-      messages: [{role: "user", content: userMsg}]
+      model: "meta-llama/llama-3.1-8b-instruct:free",
+      messages: [
+        {role: "system", content: system},
+        {role: "user", content: userMsg}
+      ]
     })
   });
   const data = await res.json();
-  const text = data.content?.[0]?.text || "لا يوجد رد";
+  const text = data.choices?.[0]?.message?.content || "لا يوجد رد";
   return text.split("**").map((s,i) => i%2===1 ? "<strong>"+s+"</strong>" : s).join("").split("\n").join("<br>");
 }
 
