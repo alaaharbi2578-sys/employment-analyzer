@@ -4,7 +4,6 @@ const handler = async (event) => {
   }
   try {
     const body = JSON.parse(event.body);
-    
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -15,9 +14,7 @@ const handler = async (event) => {
       },
       body: JSON.stringify(body)
     });
-
     const text = await response.text();
-    
     return {
       statusCode: 200,
       headers: {
@@ -27,11 +24,10 @@ const handler = async (event) => {
       body: text
     };
   } catch(e) {
-    return { 
-      statusCode: 500, 
-      body: JSON.stringify({error: e.message})
-    };
+    return { statusCode: 500, body: JSON.stringify({error: e.message}) };
   }
 };
 
+exports.handler = handler;
+exports.config = { timeout: 26 };
 module.exports = { handler };
