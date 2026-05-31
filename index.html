@@ -9,7 +9,10 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:"Cairo",sans-serif;background:#f1f5f9;direction:rtl;min-height:100vh;}
 header{background:#4169a8;padding:10px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:99;box-shadow:0 3px 12px rgba(37,99,235,0.4);}
-.h-sub{font-size:11px;color:rgba(255,255,255,0.8);}
+.logo-text{color:#fff;font-size:16px;font-weight:900;line-height:1.2;}
+.logo-text span{display:block;font-size:11px;font-weight:400;opacity:0.8;}
+.logo-icon{width:44px;height:44px;background:rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.h-sub{font-size:11px;color:rgba(255,255,255,0.8);margin-right:auto;}
 .orange-bar{background:#e07b2a;color:#fff;text-align:right;font-family:"Cairo",sans-serif;font-size:13px;font-weight:900;padding:8px 24px;text-shadow:0 1px 3px rgba(0,0,0,0.25);}
 .page{max-width:1300px;margin:0 auto;padding:20px 24px;}
 .search-box{background:#fff;border-radius:14px;padding:16px 20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:16px;}
@@ -18,6 +21,7 @@ header{background:#4169a8;padding:10px 24px;display:flex;align-items:center;gap:
 .search-row input{flex:1;max-width:320px;border:2px solid #e2e8f0;border-radius:10px;padding:9px 14px;font-family:"Cairo",sans-serif;font-size:14px;outline:none;direction:ltr;text-align:right;}
 .search-row input:focus{border-color:#2563eb;}
 .search-row button{background:#2563eb;color:#fff;border:none;border-radius:10px;padding:9px 24px;font-family:"Cairo",sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.search-row button:hover{background:#1d4ed8;}
 .main-grid{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start;}
 .worker-box{background:#fff;border-radius:14px;overflow:hidden;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
 .worker-top{background:linear-gradient(135deg,#f0fdf4,#dcfce7);padding:16px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #bbf7d0;}
@@ -35,7 +39,7 @@ table{width:100%;border-collapse:collapse;}
 thead tr{background:#f0f4ff;}
 th{padding:11px 14px;font-size:12px;font-weight:700;color:#475569;text-align:right;border-bottom:2px solid #e2e8f0;white-space:nowrap;}
 td{padding:11px 14px;font-size:13px;color:#1e293b;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
-tr:last-child td{border-bottom:none;}
+tr:last-child td{border-bottom:1px solid #f1f5f9;}
 tr.row-bad td{background:#fff5f5;}
 tr.row-bad:hover td{background:#fee2e2;}
 tr:not(.row-bad):hover td{background:#f8faff;}
@@ -51,11 +55,12 @@ tr.row-problem td{padding:0;border-bottom:1px solid #fecaca;}
 .red{color:#dc2626;font-weight:700;}
 .ai-col{position:sticky;top:80px;}
 .ai-box{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-.ai-top{background:linear-gradient(135deg,#1e1b4b,#2563eb);padding:14px 16px;display:flex;align-items:center;gap:10px;}
-.ai-ico{width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.ai-ttl{font-size:14px;font-weight:800;color:#fff;}
-.ai-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:1px;}
-.ai-btn{width:100%;padding:13px;background:linear-gradient(135deg,#1d4ed8,#4f46e5);color:#fff;border:none;font-family:"Cairo",sans-serif;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+.ai-top{background:linear-gradient(135deg,#1e1b4b,#2563eb);padding:8px 14px;display:flex;align-items:center;gap:8px;}
+.ai-ico{width:26px;height:26px;background:rgba(255,255,255,.2);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ai-ttl{font-size:12px;font-weight:800;color:#fff;}
+.ai-sub{font-size:10px;color:rgba(255,255,255,.7);margin-top:1px;}
+.ai-btn{width:100%;padding:10px;background:linear-gradient(135deg,#e07b2a,#f59e0b);color:#fff;border:none;font-family:"Cairo",sans-serif;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(224,123,42,0.5);letter-spacing:0.5px;}
+.ai-btn:hover{opacity:.9;}
 .ai-btn:disabled{opacity:.5;cursor:not-allowed;}
 .ai-body{padding:14px;max-height:300px;overflow-y:auto;}
 .ai-wait{text-align:center;padding:24px 12px;color:#64748b;}
@@ -78,7 +83,32 @@ tr.row-problem td{padding:0;border-bottom:1px solid #fecaca;}
 .chat-bubble-bot.loading{color:#94a3b8;font-style:italic;}
 .spinner{width:28px;height:28px;border:3px solid #e2e8f0;border-top-color:#2563eb;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 10px;}
 @keyframes spin{to{transform:rotate(360deg)}}
+.loading-txt{font-size:12px;color:#64748b;}
 .spacer{height:30px;}
+
+.paging-bar {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;background:#e8edf5;border-top:1px solid #e2e8f0;border-radius:0 0 14px 14px;
+  border-radius:0;
+}
+.paging-info { font-size:12px;color:#64748b;font-weight:600; }
+.paging-btns { display:flex;gap:6px; }
+.paging-btn {
+  width:32px;height:32px;border-radius:8px;border:1.5px solid #e2e8f0;
+  background:#fff;color:#475569;font-family:'Cairo',sans-serif;
+  font-size:13px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.paging-btn:hover { border-color:#2563eb;color:#2563eb; }
+.paging-btn.active { background:#2563eb;border-color:#2563eb;color:#fff; }
+.paging-btn:disabled { opacity:0.4;cursor:not-allowed; }
+
+@media(max-width:900px){
+  .main-grid{grid-template-columns:1fr;}
+  .ai-col{position:static;}
+  .worker-grid{grid-template-columns:1fr 1fr;}
+}
 </style>
 </head>
 <body>
@@ -91,10 +121,15 @@ tr.row-problem td{padding:0;border-bottom:1px solid #fecaca;}
 
 <div class="page">
   <div class="search-box">
-    <label>🔍 الرقم المدني للعامل</label>
+    <label>الرقم المدني للعامل :</label>
     <div class="search-row">
-      <input type="number" id="civilId" placeholder="أدخل الرقم المدني..." value="123456">
-      <button onclick="loadWorker()">استعلام</button>
+      <input type="text" id="civilId" value="123456">
+      <button onclick="loadWorker()" style="display:flex;align-items:center;gap:8px;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </svg>
+  استعلام
+</button>
     </div>
   </div>
 
@@ -117,8 +152,13 @@ tr.row-problem td{padding:0;border-bottom:1px solid #fecaca;}
             </thead>
             <tbody id="mvList"></tbody>
           </table>
+        <div class="paging-bar" id="pagingBar" style="display:none">
+          <div class="paging-info" id="pagingInfo"></div>
+          <div class="paging-btns" id="pagingBtns"></div>
+        </div>
         </div>
       </div>
+
       <div class="ai-col">
         <div class="ai-box">
           <div class="ai-top">
@@ -128,7 +168,12 @@ tr.row-problem td{padding:0;border-bottom:1px solid #fecaca;}
               <div class="ai-sub">يكشف المشاكل ويقترح الحلول</div>
             </div>
           </div>
-          <button class="ai-btn" id="aiBtn" onclick="analyze()">🔍 تحليل جميع الحركات</button>
+          <button class="ai-btn" id="aiBtn" onclick="analyze()"><span style="border:2px solid #fff;padding:6px 18px;border-radius:8px;"><span style="display:flex;align-items:center;gap:8px;">
+  <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'>
+    <circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/>
+  </svg>
+  تحليل جميع الحركات
+</span></span></button>
           <div class="ai-body">
             <div class="ai-wait" id="aiBody">
               <div class="ai-wait-ico">🧠</div>
@@ -136,6 +181,9 @@ tr.row-problem td{padding:0;border-bottom:1px solid #fecaca;}
             </div>
           </div>
           <div class="chat-input-area">
+      <div style="background:#2563eb;color:#fff;padding:8px 14px;font-size:12px;font-weight:700;border-radius:8px 8px 0 0;margin:-12px -14px 12px -14px;letter-spacing:0.3px;">
+        💬 اسأل الذكاء الاصطناعي عن أي حركة
+      </div>
             <div class="chat-suggestions">
               <button class="sug-btn" onclick="askQuestion('هل توجد مشكلة في الحركة 2؟')">الحركة 2 فيها مشكلة؟</button>
               <button class="sug-btn" onclick="askQuestion('ما سبب تضارب التواريخ؟')">سبب التضارب؟</button>
@@ -210,8 +258,9 @@ function loadWorker() {
   document.getElementById("content").style.display = "block";
   document.getElementById("aiBody").innerHTML = `<div class="ai-wait"><div class="ai-wait-ico">🧠</div><div class="ai-wait-txt">اضغط الزر أعلاه لتحليل الحركات</div></div>`;
   document.getElementById("chatHistory").innerHTML = "";
+  currentPage = 1;
   renderWorker();
-  renderMv();
+  renderMvPaged();
 }
 
 function renderWorker() {
@@ -272,6 +321,76 @@ function renderMv() {
   document.getElementById("mvList").innerHTML = html;
 }
 
+
+const ROWS_PER_PAGE = 5;
+let currentPage = 1;
+let totalRows = 0;
+
+function renderMvPaged() {
+  const mvs = worker.movements;
+  const prob = getProblems(mvs);
+  const lastId = mvs[mvs.length-1].id;
+  const reversed = [...mvs].reverse();
+  
+  // Count total data rows (not problem rows)
+  totalRows = reversed.length;
+  const totalPages = Math.ceil(totalRows / ROWS_PER_PAGE);
+  const start = (currentPage - 1) * ROWS_PER_PAGE;
+  const pageItems = reversed.slice(start, start + ROWS_PER_PAGE);
+
+  let html = "";
+  pageItems.forEach(m => {
+    const bad = !!prob[m.id];
+    const active = !m.end && m.id === lastId;
+    const pill = bad
+      ? '<span class="pill pill-bad">⚠️ مشكلة</span>'
+      : active
+        ? '<span class="pill pill-ok">● نشط</span>'
+        : '<span class="pill pill-end">منتهية</span>';
+    const endVal = m.end ? m.end : '<span class="red">— —</span>';
+    html += '<tr class="' + (bad ? "row-bad" : "") + '">' +
+      '<td style="text-align:center"><div class="td-num ' + (bad ? "bad" : "") + '">' + m.id + '</div></td>' +
+      '<td style="font-weight:700">' + m.company + '</td>' +
+      '<td class="ltr">' + m.cr.slice(-5) + '</td>' +
+      '<td style="white-space:nowrap">' + m.start + '</td>' +
+      '<td style="white-space:nowrap">' + endVal + '</td>' +
+      '<td>' + pill + '</td>' +
+      '</tr>';
+    if (bad) {
+      const issues = prob[m.id].issues.map(t => '<div>⚠️ ' + t + '</div>').join("");
+      const solutions = prob[m.id].solutions.map(t => '<div>✅ ' + t + '</div>').join("");
+      html += '<tr class="row-problem"><td colspan="6"><div class="prob-note">' +
+        '<div style="font-weight:700;margin-bottom:4px;color:#991b1b">المشكلة:</div>' + issues +
+        '<div style="font-weight:700;margin:6px 0 4px;color:#166534">الحل المقترح:</div>' + solutions +
+        '</div></td></tr>';
+    }
+  });
+  document.getElementById("mvList").innerHTML = html;
+
+  // Update paging bar
+  const bar = document.getElementById("pagingBar");
+  const info = document.getElementById("pagingInfo");
+  const btns = document.getElementById("pagingBtns");
+
+  bar.style.display = "flex";
+  bar.style.display = "flex";
+  info.textContent = "صفحة " + currentPage + " من " + totalPages + " (" + totalRows + " حركات)";
+
+  let btnsHtml = '<button class="paging-btn" onclick="changePage(' + (currentPage-1) + ')" ' + (currentPage===1?"disabled":"") + '>‹</button>';
+  for (let i=1; i<=totalPages; i++) {
+    btnsHtml += '<button class="paging-btn ' + (i===currentPage?"active":"") + '" onclick="changePage(' + i + ')">' + i + '</button>';
+  }
+  btnsHtml += '<button class="paging-btn" onclick="changePage(' + (currentPage+1) + ')" ' + (currentPage===totalPages?"disabled":"") + '>›</button>';
+  btns.innerHTML = btnsHtml;
+}
+
+function changePage(page) {
+  const totalPages = Math.ceil(totalRows / ROWS_PER_PAGE);
+  if (page < 1 || page > totalPages) return;
+  currentPage = page;
+  renderMvPaged();
+}
+
 function autoResize(el) {
   el.style.height = "auto";
   el.style.height = Math.min(el.scrollHeight, 80) + "px";
@@ -281,6 +400,22 @@ function getMvText() {
   return worker.movements.map(m =>
     `حركة ${m.id}: "${m.company}" | سجل: ${m.cr} | بداية: ${m.start} | نهاية: ${m.end || "غير مسجل"}`
   ).join("\n");
+}
+
+async function callClaude(system, userMsg, maxTokens) {
+  const res = await fetch("/.netlify/functions/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: maxTokens,
+      system: system,
+      messages: [{role: "user", content: userMsg}]
+    })
+  });
+  const data = await res.json();
+  const text = data.content?.[0]?.text || "لا يوجد رد";
+  return text.split("**").map((s,i) => i%2===1 ? "<strong>"+s+"</strong>" : s).join("").split("\n").join("<br>");
 }
 
 async function askQuestion(preset) {
@@ -293,23 +428,17 @@ async function askQuestion(preset) {
   const bB = document.createElement("div"); bB.className = "chat-bubble-bot loading"; bB.textContent = "جاري التفكير..."; hist.appendChild(bB);
   hist.scrollTop = hist.scrollHeight;
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST", headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514", max_tokens: 600,
-        system: `أنت مساعد متخصص في أنظمة الموارد البشرية وحركات التوظيف. لديك بيانات العامل:
+    const system = `أنت مساعد متخصص في أنظمة الموارد البشرية وحركات التوظيف. لديك بيانات العامل:
 العامل: ${worker.name} | الرقم المدني: ${worker.civilId}
 حركات العمل:
 ${getMvText()}
 قواعد: الحركة غير الأخيرة يجب أن تحتوي على تاريخ نهاية. تاريخ بداية الحركة الجديدة يجب أن يكون بعد نهاية السابقة. لا يصح تسجيل العامل في شركتين في نفس الوقت.
-أجب بالعربية بشكل مختصر وواضح.`,
-        messages: [{role:"user", content:q}]
-      })
-    });
-    const data = await res.json();
-    const reply = (data.content?.[0]?.text || "لا يوجد رد").replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>");
+أجب بالعربية بشكل مختصر وواضح.`;
+    const reply = await callClaude(system, q, 600);
     bB.className = "chat-bubble-bot"; bB.innerHTML = reply;
-  } catch(e) { bB.className = "chat-bubble-bot"; bB.textContent = "⚠️ تعذر الاتصال."; }
+  } catch(e) {
+    bB.className = "chat-bubble-bot"; bB.textContent = "⚠️ تعذر الاتصال.";
+  }
   hist.scrollTop = hist.scrollHeight;
 }
 
@@ -319,19 +448,17 @@ async function analyze() {
   btn.disabled = true;
   document.getElementById("aiBody").innerHTML = `<div style="text-align:center;padding:18px"><div class="spinner"></div><div class="loading-txt">جاري تحليل حركات العمل...</div></div>`;
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST", headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514", max_tokens: 1000,
-        system: `أنت خبير في أنظمة الموارد البشرية. حلل حركات العمل واكتشف المشاكل وأعطِ توجيهات واضحة لموظف الوزارة.
-قواعد: الحركة غير الأخيرة يجب أن تحتوي على تاريخ نهاية. تاريخ بداية الحركة الجديدة يجب أن يكون بعد نهاية السابقة. لا يصح تسجيل العامل في شركتين في نفس الوقت.
-أجب بالعربية بشكل مختصر وواضح مع ذكر رقم الحركة.`,
-        messages: [{role:"user", content:`العامل: ${worker.name}\n\nحركات العمل:\n${getMvText()}\n\nاذكر: المشاكل الموجودة، السبب، والإجراء المطلوب.`}]
-      })
-    });
-    const data = await res.json();
-    const reply = (data.content?.[0]?.text || "لا يوجد رد").replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>").replace(/\n/g,"<br>");
-    document.getElementById("aiBody").innerHTML = `<div class="ai-result"><div class="ai-result-lbl">🤖 تحليل الذكاء الاصطناعي</div>${reply}</div><div class="ai-foot">Claude AI • ${new Date().toLocaleTimeString("ar-EG")}</div>`;
+    const system = `أنت خبير في أنظمة الموارد البشرية. حلل حركات العمل واكتشف المشاكل وأعطِ توجيهات واضحة لموظف الوزارة.
+قواعد: الحركة غير الأخيرة يجب أن تحتوي على تاريخ نهاية. تاريخ بداية الحركة الجديدة يجب أن يكون بعد نهاية السابقة. لا يصح أن يكون العامل في شركتين في نفس الوقت.
+أجب بالعربية بشكل مختصر وواضح مع ذكر رقم الحركة.`;
+    const userMsg = `العامل: ${worker.name}\n\nحركات العمل:\n${getMvText()}\n\nاذكر: المشاكل الموجودة، السبب، والإجراء المطلوب.`;
+    const reply = await callClaude(system, userMsg, 1000);
+    document.getElementById("aiBody").innerHTML = `
+      <div class="ai-result">
+        <div class="ai-result-lbl">🤖 تحليل الذكاء الاصطناعي</div>
+        ${reply}
+      </div>
+      <div class="ai-foot">Claude AI • ${new Date().toLocaleTimeString("ar-EG")}</div>`;
   } catch(e) {
     document.getElementById("aiBody").innerHTML = `<div style="color:#dc2626;text-align:center;font-size:12px;padding:14px">⚠️ تعذر الاتصال. حاول مجدداً.</div>`;
   }
