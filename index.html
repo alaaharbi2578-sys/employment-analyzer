@@ -415,7 +415,7 @@ async function callClaude(system, userMsg, maxTokens) {
     })
   });
   const data = await res.json();
-  const text = data.choices?.[0]?.message?.content || "لا يوجد رد";
+  const text = data.choices?.[0]?.message?.content || "لا يوجد رد: " + JSON.stringify(data).substring(0,200);
   return text.split("**").map((s,i) => i%2===1 ? "<strong>"+s+"</strong>" : s).join("").split("\n").join("<br>");
 }
 
