@@ -4,27 +4,36 @@ const handler = async (event) => {
   }
   try {
     const body = JSON.parse(event.body);
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + process.env.OPENROUTER_KEY,
-        "HTTP-Referer": "https://localhost",
+        "HTTP-Referer": "https://snazzy-starburst-365917.netlify.app",
         "X-Title": "Employment Analyzer"
       },
-      body: JSON.stringify(body)
+      body: JSON.stringify({
+        model: "mistralai/mistral-7b-instruct:free",
+        messages: body.messages
+      })
     });
-    const data = await res.json();
+
+    const text = await response.text();
+    
     return {
       statusCode: 200,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
       },
-      body: JSON.stringify(data)
+      body: text
     };
   } catch(e) {
-    return { statusCode: 500, body: JSON.stringify({error: e.message}) };
+    return { 
+      statusCode: 500, 
+      body: JSON.stringify({error: e.message})
+    };
   }
 };
 
