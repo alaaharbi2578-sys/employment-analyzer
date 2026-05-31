@@ -13,10 +13,7 @@ const handler = async (event) => {
         "HTTP-Referer": "https://snazzy-starburst-365917.netlify.app",
         "X-Title": "Employment Analyzer"
       },
-      body: JSON.stringify({
-        model: "mistralai/mistral-7b-instruct:free",
-        messages: body.messages
-      })
+      body: JSON.stringify(body)
     });
 
     const text = await response.text();
